@@ -144,19 +144,21 @@ $singleuser = $user->single_user($_SESSION['USERID']);
 
                         <li>
                             <a href="<?php echo web_root; ?>admin/products/index.php"
-                                style="display: flex; gap: 2rem; align"><i class="fa fa-book" aria-hidden="true"></i>
-                                Books
+                                style="display: flex; gap: 1.3rem; align-items: center;"><i class="fa fa-book"
+                                    aria-hidden="true"></i>Books
                             </a>
 
                         </li>
                         <li>
-                            <a href="<?php echo web_root; ?>admin/orders/index.php"><i class="fa fa-reorder fa-fw"></i>
-                                Orders
+                            <a href="<?php echo web_root; ?>admin/orders/index.php"
+                                style="display: flex; gap: 1.3rem; align-items: center;"><i
+                                    class="fa fa-reorder fa-fw"></i>Orders
                                 <?php echo $order; ?></a>
                         </li>
 
                         <li>
-                            <a href="<?php echo web_root; ?>admin/category/index.php"><i
+                            <a href="<?php echo web_root; ?>admin/category/index.php"
+                                style="display: flex; gap: 1.3rem; align-items: center;"><i
                                     class="fa fa-list-alt fa-fw"></i>
                                 Categories </a>
 
@@ -165,9 +167,11 @@ $singleuser = $user->single_user($_SESSION['USERID']);
                             # code...
                         ?>
                         <li>
-                            <a href="<?php echo web_root; ?>admin/settings/index.php"><i
-                                    class="fa fa-list-alt fa-fw"></i>
-                                Setting </a>
+                            <a href="<?php echo web_root; ?>admin/settings/index.php"
+                                style="display: flex; gap: 1.3rem; align-items: center;"><i class="fa fa-cog"
+                                    aria-hidden="true"></i>
+
+                                Settings </a>
 
                         </li>
                         <!--   <li>
@@ -175,12 +179,16 @@ $singleuser = $user->single_user($_SESSION['USERID']);
             
                         </li> -->
                         <li>
-                            <a href="<?php echo web_root; ?>admin/user/index.php"><i class="fa fa-user fa-fw"></i> Users
+                            <a href="<?php echo web_root; ?>admin/user/index.php"
+                                style="display: flex; gap: 1.3rem; align-items: center;"><i
+                                    class="fa fa-user fa-fw"></i>
+                                Users
                             </a>
 
                         </li>
                         <li>
-                            <a href="<?php echo web_root; ?>admin/report/index.php"><i
+                            <a href="<?php echo web_root; ?>admin/report/index.php"
+                                style="display: flex; gap: 1.3rem; align-items: center;"><i
                                     class="fa  fa-file-text fa-fw"></i>
                                 Report </a>
 

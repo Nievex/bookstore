@@ -8,7 +8,7 @@ $content='home.php';
 $view = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 switch ($view) {
 	case '1' :
-        $title="Foods";	
+        $title="Books";	
 		$content='products/';		
 		break;	
 	default :

@@ -172,9 +172,9 @@ $res = $mydb->loadResultList();
     <div class="col-md-10 col-md-offset-1 ">
         <!-- <div class="col-md-12"> -->
         <div class="row ">
-            <p style="margin-top: -50px;" class="title-logo">
+            <p style="margin-top: -30px;" class="title-logo">
                 <a class="" href="<?php echo web_root; ?>index.php" title="">
-                    <img src="img/cover1.jpg" alt="logo" />
+                    <img src="img/cover1.png" alt="logo" />
                 </a>
             </p>
         </div>

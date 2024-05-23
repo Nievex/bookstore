@@ -52,8 +52,8 @@ $singlecustomer = $customer->single_customer($customerid);
             <thead>
                 <tr>
                     <!-- <th width="10">#</th> -->
-                    <th style="width:12%; text-align: center; padding: 1rem 0;">Foods</th>
-                    <th style="text-align: center; padding: 1rem 0;">Description</th>
+                    <th style="width:12%; text-align: center; padding: 1rem 0;">Book</th>
+                    <th style="text-align: center; padding: 1rem 0;">Title</th>
                     <th style="width:15%; text-align: center; padding: 1rem 0;">Quantity</th>
                     <th style="width:15%; text-align: center; padding: 1rem 0;">Price</th>
                     <th style="width:30%; text-align: center; padding: 1rem 0;">Total</th>
@@ -78,7 +78,7 @@ $singlecustomer = $customer->single_customer($customerid);
                 <tr style="text-align: center;">
                     <!-- <td></td> -->
                     <td style="margin-bottom: 12px;"><img src="admin/products/<?php echo $result->IMAGES ?>"
-                            width="100px" height="100px"></td>
+                            width="100px" height="130px"></td>
                     <td style="margin-bottom: 12px;"><?php echo $result->PRODESC ; ?></td>
                     <td style="margin-bottom: 12px;"><?php echo $_SESSION['gcCart'][$i]['qty']; ?></td>
                     <td style="margin-bottom: 12px;">&#8369 <?php echo  $result->PRODISPRICE ?></td>
@@ -121,8 +121,7 @@ $singlecustomer = $customer->single_customer($customerid);
                 <div class="radio">
                     <label>
                         <input type="radio" class="paymethod" name="paymethod" id="deliveryfee" value="GCash"
-                            checked="true" data-toggle="collapse" data-parent="#accordion"
-                            data-target="#collapseOne">GCash
+                            data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">GCash
                     </label>
                 </div>
 
@@ -140,13 +139,13 @@ $singlecustomer = $customer->single_customer($customerid);
                               
                             </div> -->
                     <!-- <div id="collapseOne" class="panel-collapse collapse active"> -->
-                    <!-- <div class="panel-body">
+                    <div class="panel-body">
                         <div class="form-group">
                             <div class="col-md-12">
                                 <label class="col-md-8 control-label" for="PLACE">Type of Customer</label>
                                 <select class="form-control paymethod" name="PLACE" id="PLACE"
                                     onchange="validatedate()">
-                                    <option value="0" selected disabled>Select</option>
+                                    <!-- <option value="0" selected disabled>Select</option> -->
                                     <?php 
                                             $query = "SELECT * FROM `tblsetting` ";
                                             $mydb->setQuery($query);
@@ -158,10 +157,9 @@ $singlecustomer = $customer->single_customer($customerid);
                                             ?>
                                 </select>
                             </div>
-
                         </div>
+                    </div>
 
-                    </div> -->
                 </div>
                 <!--   </div>
                    </div>             
@@ -175,9 +173,10 @@ $singlecustomer = $customer->single_customer($customerid);
 
             <div class="col-md-5" style="margin-bottom: 4rem;">
                 <p align="right">
-                <div> Total Price : &#8369<span id="sum">0.00</span></div>
-                <div> Discount: &#8369<span id="fee">0.00</span></div>
-                <div> Overall Price : &#8369<span id="overall"
+                <div> Total Price: &#8369<span id="sum">0.00</span></div>
+                <div> Delivery Fee: &#8369<span id="fee">0.00</span></div>
+                <!-- <div> Discount: &#8369<span id="discount">0.00</span></div> -->
+                <div> Overall Price: &#8369<span id="overall"
                         style="font-weight: 700; font-size: 16px;"><?php echo $tot ;?></span></div>
                 <input type="hidden" name="alltot" id="alltot" value="<?php echo $tot ;?>" />
                 </p>

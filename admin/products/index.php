@@ -9,7 +9,7 @@ if(!isset($_SESSION['USERID'])){
 $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
 
 	$header=$view;
-	$title="Food"; 
+	$title="Books"; 
 	switch ($view) {
 
 	case 'list' :
@@ -31,7 +31,7 @@ $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
   
 
   	default :
-	$title="Food";
+	$title="Books";
 		$content    = 'list.php';
 	}
 
@@ -40,4 +40,3 @@ $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
  
 require_once ("../theme/templates.php");
 ?>
-  
