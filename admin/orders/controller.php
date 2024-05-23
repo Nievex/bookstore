@@ -112,55 +112,45 @@ function doInsert(){
 }
 
 
-function doEdit(){
-    global $mydb; 
-    $delivered = "";
-    if ($_GET['actions']=='confirm') {
-        $status = 'Confirmed';  
-        $remarks = 'Your order has been confirmed.';
-        $delivered = Date('Y-m-d');
-    } elseif ($_GET['actions']=='deliver') {
-        $status = 'Delivered';  
-        $remarks = 'Your order has been delivered.';
-        $delivered = Date('Y-m-d');
-    } elseif ($_GET['actions']=='cancel'){
-        $status = 'Cancelled';
-        $remarks = 'Your order has been cancelled due to lack of communication and incomplete information.';
-    }
-    
-    $order = New Order();
-    $order->STATS = $status;
-    $order->pupdate($_GET['id']);
+	function doEdit(){
+		global $mydb; 
+		$delivered = "";
+		if ($_GET['actions']=='confirm') {
+			$status = 'Confirmed';  
+			$remarks = 'Your order has been confirmed.';
+			$delivered = Date('Y-m-d');
+		} elseif ($_GET['actions']=='deliver') {
+			$status = 'Delivered';  
+			$remarks = 'Your order has been delivered.';
+			$delivered = Date('Y-m-d');
+		} elseif ($_GET['actions']=='cancel'){
+			$status = 'Cancelled';
+			$remarks = 'Your order has been cancelled due to lack of communication and incomplete information.';
+		}
+		
+		$order = New Order();
+		$order->STATS = $status;
+		$order->pupdate($_GET['id']);
 
-    $summary = New Summary();
-    $summary->ORDEREDSTATS = $status;
-    $summary->ORDEREDREMARKS = $remarks;
-    $summary->CLAIMEDADTE = $delivered;
-    $summary->HVIEW = 0;
-    $summary->update($_GET['id']);
-    
-    $query = "SELECT * FROM `tblsummary` s, `tblcustomer` c WHERE s.`CUSTOMERID` = c.`CUSTOMERID` AND ORDEREDNUM=".$_GET['id'];
-    $mydb->setQuery($query);
-    $cur = $mydb->loadSingleResult();
+		$summary = New Summary();
+		$summary->ORDEREDSTATS = $status;
+		$summary->ORDEREDREMARKS = $remarks;
+		$summary->CLAIMEDADTE = $delivered;
+		$summary->HVIEW = 0;
+		$summary->update($_GET['id']);
+		
+		$query = "SELECT * FROM `tblsummary` s, `tblcustomer` c WHERE s.`CUSTOMERID` = c.`CUSTOMERID` AND ORDEREDNUM=".$_GET['id'];
+		$mydb->setQuery($query);
+		$cur = $mydb->loadSingleResult();
 
-    $sql = "INSERT INTO `messageout` (`Id`, `MessageTo`, `MessageFrom`, `MessageText`) 
-        VALUES (Null, '".$cur->PHONE."', 'Janno', 'FROM Bachelor of Science and Entrepreneurs: Your order has been ".$status.". The amount is ".$cur->PAYMENT."')";
-    $mydb->setQuery($sql);
-    $mydb->executeQuery();
-
-    $query = "SELECT * FROM `tblproduct` p, `tblorder` o, `tblsummary` s WHERE p.`PROID` = o.`PROID` AND o.`ORDEREDNUM` = s.`ORDEREDNUM` AND o.`ORDEREDNUM`=".$_GET['id'];
-    $mydb->setQuery($query);
-    $cur = $mydb->loadResultList();
-    foreach ($cur as $result) {
-        $sql = "INSERT INTO `messageout` (`Id`, `MessageTo`, `MessageFrom`, `MessageText`) 
-        VALUES (Null, '".$cur->PHONE."', 'Janno', 'FROM Bachelor of Science and Entrepreneurs: Your order has been ".$status.". The amount is ".$cur->PAYMENT."')";
-        $mydb->setQuery($sql);
-        $mydb->executeQuery();
-    }
-    
-    message("Order has been ".$summary->ORDEREDSTATS."!", "success");
-    redirect("index.php");
-}
+		$sql = "INSERT INTO `messageout` (`Id`, `MessageTo`, `MessageFrom`, `MessageText`) 
+			VALUES (Null, '".$cur->PHONE."', 'Janno', 'FROM Bachelor of Science and Entrepreneurs: Your order has been ".$status.". The amount is ".$cur->PAYMENT."')";
+		$mydb->setQuery($sql);
+		$mydb->executeQuery();
+		
+		message("Order has been ".$summary->ORDEREDSTATS."!", "success");
+		redirect("index.php");
+	}
 
 	 
 	function doDelete(){
@@ -181,7 +171,7 @@ function doEdit(){
 			$payment = New Payment();
 			$payment->delete($id[$i]);
 
-			message("Food has been Deleted!","info");
+			message("Book has been deleted!","info");
 			redirect('index.php?view=add');
 		}
 

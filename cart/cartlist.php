@@ -21,10 +21,10 @@ check_message();
                                         <tr>
                                             <td>
                                                 <div class="culomn4">
-                                                    <div style="float: left; width:90px">Food</div>
+                                                    <div style="float: left; width:90px">Book</div>
                                                 </div>
                                                 <div class="culomn4">
-                                                    <div style="float: left; width:250px">Description</div>
+                                                    <div style="float: left; width:250px">Title</div>
                                                 </div>
                                                 <div class="culomn4">
                                                     <div style="float: left; width:200px">Quantity</div>

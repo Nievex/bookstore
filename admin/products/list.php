@@ -46,7 +46,7 @@
 				  		echo '<td width="1%" align="center"><input type="checkbox" name="selector[]" id="selector[]" value="'.$result->PROID. '"/></td>';
 				    echo '<td style="padding:0px;">
 							<a class="PROID" href="" data-target="#productmodal"  data-toggle="modal"  data-id="'.$result->PROID.'"> 
-							<img  title="'.$result->CATEGORIES.'" style="width:100px;height:50px;padding:0;"  src="'. web_root.'admin/products/'.$result->IMAGES . '">
+							<img  title="'.$result->CATEGORIES.'" style="width:80px;padding:0;"  src="'. web_root.'admin/products/'.$result->IMAGES . '">
 							</a></td>'; 	
 				  		// echo '<td><a title="edit" href="'.web_root.'admin/products/index.php?view=edit&id='.$result->PROID.'"><i class="fa fa-pencil "></i> ' . $result->PROMODEL.'</a></td>';
 				  		echo '<td><a title="edit" href="'.web_root.'admin/products/index.php?view=edit&id='.$result->PROID.'"><i class="fa fa-pencil "></i>'.$result->CATEGORIES.'</a></td>';

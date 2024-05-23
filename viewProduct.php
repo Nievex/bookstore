@@ -22,15 +22,37 @@ require_once("include/initialize.php");
              
       ?>
 
+<head>
+    <style>
+    .view-product-book {
+        width: 230px;
+        margin: 0 0 1rem 0;
+    }
+
+    @media (max-width: 580px) {
+        .view-product-book {
+            width: 200px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .view-product-book {
+            width: 180px;
+        }
+    }
+    </style>
+</head>
+
 <div class="modal-dialog" style="width:50%">
     <div class="modal-content">
-        <button class="close" data-dismiss="modal" type="button">×</button>
+        <button class="close" data-dismiss="modal" type="button"
+            style="padding: 1rem; font-size: 24px; color: red; cursor: pointer;">×</button>
         <form method="POST" action="cart/controller.php?action=add">
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-6">
-                        <img width="230" class="" height="280"
-                            src="<?php echo web_root . 'admin/products/'.  $cur->IMAGES;?>" alt="">
+                    <div class="col-md-6" style="display: flex; justify-content: center; width: 100%;">
+                        <img class="view-product-book" src="<?php echo web_root . 'admin/products/'.  $cur->IMAGES;?>"
+                            alt="">
                     </div>
 
 
@@ -42,7 +64,7 @@ require_once("include/initialize.php");
                         <!-- <h3><?php echo $cur->PRONAME ; ?></h3> -->
                         <p><?php echo   $cur->CATEGORIES;?></p>
                         <!-- <h3>Project Details</h3> -->
-                        <ul>
+                        <ul style="padding: 0 2rem;">
                             <!-- <li>Model - <?php echo $cur->PROMODEL; ?></li> -->
                             <li>Type - <?php echo $cur->PRODESC; ?></li>
                             <li>Price - &#8369 <?php echo $cur->PROPRICE; ?></li>

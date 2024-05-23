@@ -9,8 +9,8 @@
 
                      <!-- Nav tabs -->
 
-                     <ul class="nav nav-pills">
-                         <li class="active"><a href="#home" data-toggle="tab">Login</a>
+                     <ul class="nav nav-pills" style="margin: 0 0 2rem 0;">
+                         <li class="active" style="margin: 0 1rem 0 0;"><a href="#home" data-toggle="tab">Login</a>
                          </li>
                          <li><a href="#profile" data-toggle="tab">Sign Up</a>
                          </li>
@@ -60,8 +60,9 @@
 
                                                  <div class="col-md-8">
                                                      <button type="submit" id="modalLogin" name="modalLogin"
-                                                         class="btn btn-primary"><span
-                                                             class="glyphicon glyphicon-log-in "></span> Login</button>
+                                                         class="btn btn-primary"><i class="fa fa-chevron-right"
+                                                             aria-hidden="true"></i>
+                                                         Login</button>
                                                      <button class="btn btn-default" data-dismiss="modal"
                                                          type="button">Close</button>
                                                  </div>
@@ -270,14 +271,15 @@
 
                                      <div class="form-group">
                                          <div class="col-md-10">
-                                             <label class="col-md-4" align="right" for="image">Upload Image:</label>
+                                             <label class="col-md-4" for="image" style="text-align: right;">Upload
+                                                 Image:</label>
 
                                              <div class="col-md-8">
                                                  <input type="file" name="image" value="" id="image" />
                                              </div>
                                          </div>
                                      </div>
-
+                                     <!-- 
                                      <div class="form-group">
                                          <div class="col-md-10">
                                              <label class="col-md-4" align="right" for="image"></label>
@@ -291,7 +293,7 @@
 
                                              </div>
                                          </div>
-                                     </div>
+                                     </div> -->
 
                                      <div class="form-group">
                                          <div class="col-md-10">

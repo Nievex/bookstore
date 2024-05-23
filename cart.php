@@ -1,5 +1,3 @@
-
- 
 <?php  
 
   // if (!isset($_SESSION['USERID'])){
@@ -7,20 +5,20 @@
 check_message();  
  
 ?>
-               
-                    <div class="table-responsive"  >
-                    <div class="cartLi"> 
 
-                         <table  class="table table-default" id="table" >
-                         <thead> 
-                             <td  >Books</td>
-                             <td >Description</td>
-                             <td  width="15%" >Price</td>
-                             <td  width="15%" >Quantity</td> 
-                             <td  width="15%" >Total</td>  
-                         </thead>  
-                          
-                             <?php
+<div class="table-responsive">
+    <div class="cartLi">
+
+        <table class="table table-default" id="table">
+            <thead>
+                <td>Books</td>
+                <td>Description</td>
+                <td width="15%">Price</td>
+                <td width="15%">Quantity</td>
+                <td width="15%">Total</td>
+            </thead>
+
+            <?php
 
 
 
@@ -41,11 +39,12 @@ check_message();
                                  foreach ($cur as $result) {
 
                                 ?>
-                                <tr>
-                                	<td>  
-                                	  <img src="<?php echo web_root. 'admin/products/'.$result->IMAGES; ?>"  onload="  totalprice() " width="50px" height="50px"> 
-                                  <br/> 
-                                        <?php    
+            <tr>
+                <td>
+                    <img src="<?php echo web_root. 'admin/products/'.$result->IMAGES; ?>" onload="  totalprice() "
+                        width="50px" height="50px">
+                    <br />
+                    <?php    
                                           
                                               
                                             if (isset($_SESSION['CUSID'])){  
@@ -64,59 +63,70 @@ check_message();
 
 
 
-                                 </td>
-                              		<td>  
-                              			<?php echo  $result->PRODESC ; ?>
-                              		</td>
-                              		<td>
-                                    <input type="hidden"    id ="PROPRICE<?php echo $result->PROID;  ?>" name="PROPRICE<?php echo $result->PROID; ?>" value="<?php echo  $result->PRODISPRICE ; ?>" >
-                                     
-                              		&#8369	<?php echo  $result->PRODISPRICE ; ?>
-                              		</td>
-                              		<td class="input-group custom-search-form" >
-                                       <input type="hidden" maxlength="3" class="form-control input-sm"  autocomplete="off"  id ="ORIGQTY<?php echo $result->PROID;  ?>" name="ORIGQTY<?php echo $result->PROID; ?>" value="<?php echo $result->PROQTY; ?>"   placeholder="Search for...">
-                                        
-                                        <input type="number" maxlength="3" data-id="<?php echo $result->PROID;  ?>" class="QTY form-control input-sm"  autocomplete="off"  id ="QTY<?php echo $result->PROID;  ?>" name="QTY<?php echo $result->PROID; ?>" value="<?php echo $_SESSION['gcCart'][$i]['qty']; ?>"   placeholder="Search for...">
-                                        <span class="input-group-btn">
-                                                <a title="Remove Item"  class="btn btn-danger btn-sm" id="btnsearch" name="btnsearch" href="cart/controller.php?action=delete&id=<?php echo $result->PROID; ?>">
-                                                <i class="fa fa-trash-o"></i>
-                                            </a>
-                                        </span>
-                                        </td>
-                                      
-                                        <input type="hidden"    id ="TOT<?php echo $result->PROID;  ?>" name="TOT<?php echo $result->PROID; ?>" value="<?php echo  $result->PRODISPRICE ; ?>" >
-                                   
-                                     <td> &#8369 <output id="Osubtot<?php echo $result->PROID ?>"><?php echo   $_SESSION['gcCart'][$i]['price'] ; ?></output></td>
-                                </tr>
-         
-                            <?php  
+                </td>
+                <td>
+                    <?php echo  $result->PRODESC ; ?>
+                </td>
+                <td>
+                    <input type="hidden" id="PROPRICE<?php echo $result->PROID;  ?>"
+                        name="PROPRICE<?php echo $result->PROID; ?>" value="<?php echo  $result->PRODISPRICE ; ?>">
+
+                    &#8369 <?php echo  $result->PRODISPRICE ; ?>
+                </td>
+                <td class="input-group custom-search-form">
+                    <input type="hidden" maxlength="3" class="form-control input-sm" autocomplete="off"
+                        id="ORIGQTY<?php echo $result->PROID;  ?>" name="ORIGQTY<?php echo $result->PROID; ?>"
+                        value="<?php echo $result->PROQTY; ?>" placeholder="Search for...">
+
+                    <input type="number" maxlength="3" data-id="<?php echo $result->PROID;  ?>"
+                        class="QTY form-control input-sm" autocomplete="off" id="QTY<?php echo $result->PROID;  ?>"
+                        name="QTY<?php echo $result->PROID; ?>" value="<?php echo $_SESSION['gcCart'][$i]['qty']; ?>"
+                        placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <a title="Remove Item" class="btn btn-danger btn-sm" id="btnsearch" name="btnsearch"
+                            href="cart/controller.php?action=delete&id=<?php echo $result->PROID; ?>">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </span>
+                </td>
+
+                <input type="hidden" id="TOT<?php echo $result->PROID;  ?>" name="TOT<?php echo $result->PROID; ?>"
+                    value="<?php echo  $result->PRODISPRICE ; ?>">
+
+                <td> &#8369 <output
+                        id="Osubtot<?php echo $result->PROID ?>"><?php echo   $_SESSION['gcCart'][$i]['price'] ; ?></output>
+                </td>
+            </tr>
+
+            <?php  
                                  }
                                }
                                }else{ 
                                   echo "<h1>There is no item in the cart.</h1>";
                                } 
-                            ?>  
-                            
-                      </table> 
+                            ?>
+
+        </table>
 
 
-                        <h3 align="right"> Total  &#8369<span id="sum">0</span></h3> </td>  
-                    
-<!-- 
+        <h3 align="right"> Total &#8369<span id="sum">0</span></h3>
+        </td>
+
+        <!-- 
                 <a href="index.php?q=product" class="btn btn-default pull-left btn-sm"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<strong>Add New Order</strong></a>
                 <a href="index.php?page=7" name="proceed"  class="btn btn-info pull-right btn-sm"   ><strong>Proceed And Checkout</strong> <span class="glyphicon glyphicon-chevron-right"></span></a> 
-                --> 
- </div>
-                   </div> 
-                  <!--reponsive -->
+                -->
+    </div>
+</div>
+<!--reponsive -->
 
 <form action="index.php?q=orderdetails" method="post">
-   <a href="index.php?q=product" class="btn btn-default pull-left btn-sm">
-   <i class="fa fa-arrow-left fa-fw"></i>
-   Add New Order
-   </a>
+    <a href="index.php?q=product" class="btn btn-default pull-left btn-sm">
+        <i class="fa fa-arrow-left fa-fw"></i>
+        Add New Order
+    </a>
 
-     <?php    
+    <?php    
   
                      $countcart =isset($_SESSION['gcCart'])? count($_SESSION['gcCart']) : "0";
                    if ($countcart > 0){
@@ -139,5 +149,5 @@ check_message();
 
 
                 ?>
- </form>
- <?php include "LogSignModal.php"; ?> 
+</form>
+<?php include "LogSignModal.php"; ?>

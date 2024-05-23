@@ -46,7 +46,7 @@
  <!-- Projects Row -->
  <div class="row">
      <div class="col-md-12 book-grid">
-         <?php   check_message(); ?>
+
          <?php 
           $query = "SELECT * FROM `tblproduct` p  ,`tblcategory` c  WHERE   p.`CATEGID`=c.`CATEGID` AND PROQTY>0 ";
           $mydb->setQuery($query);

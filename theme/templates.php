@@ -113,7 +113,7 @@ if (isset($_SESSION['gcCart'])){
             <div class="navbar-header">
                 <h5 class="navbar-menu p">BCP Online Bookstore System</h5>
                 <button type="button" class="navbar-toggle btn-xs p" data-toggle="collapse" data-target=".smMenu">
-                    <i class="fa fa-bars" aria-hidden="true" style="color: #fff;"></i>
+                    <i class="fa fa-bars" aria-hidden="true" style="color: #fff; padding: 0 1rem;"></i>
                 </button>
             </div>
             <div class="collapse navbar-collapse  smMenu">
@@ -185,7 +185,7 @@ $res = $mydb->loadResultList();
 
         <div class="container ">
             <div class="navbar-header">
-                <div class="navbar-menu p">Menu</div>
+                <!-- <div class="navbar-menu p">Menu</div> -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bigMenu">
                     <i class="fa fa-bars" aria-hidden="true" style="color: #fff;"></i>
                 </button>
@@ -263,7 +263,7 @@ $res = $mydb->loadResultList();
                   echo  $title . (isset($_GET['category']) ?  '  |  ' .$_GET['category'] : '' )?></b>
                             </div>
                             <div class="panel-body">
-
+                                <?php   check_message(); ?>
                                 <?php require_once $content; ?>
 
 

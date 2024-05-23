@@ -34,7 +34,7 @@ $singlecustomer = $customer->single_customer($customerid);
                 Address:
             </div>
             <div class="col-md-8 col-lg-10 col-sm-3" style="float:left">
-                <?php echo $singlecustomer->CUSHOMENUM . ' ' . $singlecustomer->STREETADD . ' ' .$singlecustomer->BRGYADD . ' ' . $singlecustomer->CITYADD . ' ' .$singlecustomer->PROVINCE . ' ' .$singlecustomer->COUNTRY; ?>
+                <?php echo $singlecustomer->STREETADD . '' .$singlecustomer->BRGYADD . ', ' . $singlecustomer->CITYADD; ?>
             </div>
         </div>
 
