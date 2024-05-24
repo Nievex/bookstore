@@ -24,8 +24,6 @@
 	                    <th>Description</th>
 	                    <!-- <th>Category</th> -->
 	                    <th>Price</th>
-	                    <th>Discount%</th>
-	                    <th>Discounted Price</th>
 
 	                    <th>Quantity</th>
 
@@ -53,8 +51,6 @@
 				  		
 				  		echo '<td>'. $result->PRODESC.'</td>'; 
 				  		echo '<td> &#8369 '.  number_format($result->PROPRICE,2).'</td>';
-				  		echo '<td> &#8369 '.  number_format($result->PRODISCOUNT,0).'</td>';
-				  		echo '<td> &#8369 '.  number_format($result->PRODISPRICE,2).'</td>';
 
 				  		echo '<td width="4%">'. $result->PROQTY.'</td>';
 				  		// echo '<td><a href="controller.php?action=delete&id='.$result->PROD.'" class="btn btn-danger">delete</a></td>';

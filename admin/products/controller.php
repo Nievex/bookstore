@@ -32,75 +32,65 @@ switch ($action) {
 
    
 function doInsert(){
-	if(isset($_POST['save'])){
-		
-	 
+    if(isset($_POST['save'])){
+        
+        $errofile = $_FILES['image']['error'];
+        $type = $_FILES['image']['type'];
+        $temp = $_FILES['image']['tmp_name'];
+        $myfile = $_FILES['image']['name'];
+        $location = "uploaded_photos/".$myfile;
 
-			$errofile = $_FILES['image']['error'];
-			$type = $_FILES['image']['type'];
-			$temp = $_FILES['image']['tmp_name'];
-			$myfile =$_FILES['image']['name'];
-		 	$location="uploaded_photos/".$myfile;
+        if ($errofile > 0) {
+            message("No Image Selected!", "error");
+            redirect("index.php?view=add");
+        } else {
+            @$file = $_FILES['image']['tmp_name'];
+            @$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+            @$image_name = addslashes($_FILES['image']['name']); 
+            @$image_size = getimagesize($_FILES['image']['tmp_name']);
 
+            if ($image_size == FALSE || $type == 'video/wmv') {
+                message("Uploaded file is not an image!", "error");
+                redirect("index.php?view=add");
+            } else {
+                // uploading the file
+                move_uploaded_file($temp, "uploaded_photos/" . $myfile);
+                
+                if ($_POST['PRODESC'] == "" OR $_POST['PROPRICE'] == "") {
+                    $messageStats = false;
+                    message("All fields are required!", "error");
+                    redirect('index.php?view=add');
+                } else {    
+                    $autonumber = New Autonumber();
+                    $res = $autonumber->set_autonumber('PROID');
 
-		if ( $errofile > 0) {
-				message("No Image Selected!", "error");
-				redirect("index.php?view=add");
-		}else{
-	 
-				@$file=$_FILES['image']['tmp_name'];
-				@$image= addslashes(file_get_contents($_FILES['image']['tmp_name']));
-				@$image_name= addslashes($_FILES['image']['name']); 
-				@$image_size= getimagesize($_FILES['image']['tmp_name']);
+                    $product = New Product(); 
+                    $product->IMAGES = $location; 
+                    $product->PRODESC = $_POST['PRODESC'];
+                    $product->CATEGID = $_POST['CATEGORY'];
+                    $product->PROQTY = $_POST['PROQTY'];
+                    $product->ORIGINALPRICE = $_POST['ORIGINALPRICE']; 
+                    $product->PROPRICE = $_POST['PROPRICE']; 
+                    $product->PROSTATS = 'Available';
+                    $product->PROID = $res->AUTO;
+                    $product->create();
+					
+                    $promo = New Promo();  
+                    $promo->PROID = $res->AUTO;  
+                    $promo->PRODISPRICE = $_POST['PROPRICE'];     
+                    $promo->create();
 
-			if ($image_size==FALSE || $type=='video/wmv') {
-				message("Uploaded file is not an image!", "error");
-				redirect("index.php?view=add");
-			}else{
-					//uploading the file
-					move_uploaded_file($temp,"uploaded_photos/" . $myfile);
-		 	
-					if ($_POST['PRODESC'] == "" OR $_POST['PROPRICE'] == "") {
-					$messageStats = false;
-					message("All fields are required!","error");
-					redirect('index.php?view=add');
-					}else{	
-
-			 
-						$autonumber = New Autonumber();
-						$res = $autonumber->set_autonumber('PROID');
-
-  				 	 	$product = New Product(); 
-						// $product->OWNERNAME 		= $_POST['OWNERNAME']; 
-						// $product->OWNERPHONE 		= $_POST['OWNERPHONE'];
-						$product->IMAGES 		= $location; 
-						$product->PRODESC 		= $_POST['PRODESC'];
-						$product->CATEGID	    = $_POST['CATEGORY'];
-						$product->PROQTY		= $_POST['PROQTY'];
-						$product->ORIGINALPRICE	= $_POST['ORIGINALPRICE']; 
-						$product->PROPRICE		= $_POST['PROPRICE']; 
-						$product->PROSTATS		= 'Available';
-						$product->create();
-						// }
-
- 
-
-						$promo = New Promo();  
-						$promo->PROID		= $res->AUTO;  
-						$promo->PRODISPRICE	= $_POST['PROPRICE'];     
-						$promo->create();
-
-						message("New Food created successfully!", "success");
-						redirect("index.php");
-						}
-							
-					}
-			}
-			 
-		  }
+					$autonumber = New Autonumber();
+					$autonumber->auto_update('PROID');
 
 
-	  }
+                    message("New Book created successfully!", "success");
+                    redirect("index.php");
+                }
+            }
+        }
+    }
+}
  
  
 	function doEdit(){
