@@ -130,7 +130,7 @@ function doInsert(){
 						$product->update($_POST['PROID']);
   
 
-			message("Food has been updated!", "success");
+			message("Book has been updated!", "success");
 			redirect("index.php");
 	  }
 	redirect("index.php"); 
@@ -161,7 +161,7 @@ function doInsert(){
 			$promo = New Promo();   
 			$promo->delete($id[$i]);
 
-			message("Food has been Deleted!","info");
+			message("Book has been Deleted!","info");
 			redirect('index.php');
 
 			}
